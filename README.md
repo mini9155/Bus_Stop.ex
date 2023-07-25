@@ -2,7 +2,7 @@
 프로젝트를 진행하면서 몰랐던 것들을 정리하기 위한 리포지토리
 
 
-1. ASP.NET Core 웹앱(Model-view-Controller) 생성
+1. ASP.NET Core 웹앱 API 생성
 
 2. appsettings.json 에서 연결 문자열 추가
 
@@ -21,6 +21,15 @@
   }
 }
 ```
+3. Program.cs에 소스코드 추가
+
+```
+builder.Services.AddDbContext<BusContext>(options => options.UseMySql(
+                builder.Configuration.GetConnectionString("DefaultConnection"),
+                ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+                ));
+```
+
 3. 구현에 필요한 NUGET 패키지 설치
  - Microsoft.EntityFrameworkCore
  - Microsoft.EntityFrameworkCore.Tools
@@ -32,7 +41,7 @@
 ```
     public partial class BusTable
     {
-        [Key] // 추가해야함
+        [Key] // 추가해야함 - 기본키
         public int BusIdx { get; set; }
 
         public string BusNum { get; set; } = null!;
@@ -74,5 +83,5 @@
    - 패키지 관리자 콘솔에서 Add-Migration 테이블명 을 작성한다
    - 오류 메세지가 없으면 Update-Database를 작성한다
    - 실행이 완료되면 Migration 폴더가 생기고 MySQL에 들어가면 테이블이 생성이 되어있다.
-   - 속성은 세부적으로 설정한 것이 아니어서 필요시 MySQL에서 수정해도 된다
+   - 속성은 위에서 세부적으로 설정하지 않아서 필요시 MySQL에서 수정해도 된다
 
