@@ -5,29 +5,29 @@
 
 2. appsettings.json 에서 연결 문자열 추가
 
-```
-{
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
+  ```
+  {
+    "Logging": {
+      "LogLevel": {
+        "Default": "Information",
+        "Microsoft.AspNetCore": "Warning"
+      }
+    },
+    "AllowedHosts": "*",
+    // 이 부분부터 추가
+    "ConnectionStrings": {
+      "DefaultConnection": "server=localhost;port=3306;database=bus;user=root;password=12345;"
     }
-  },
-  "AllowedHosts": "*",
-  // 이 부분부터 추가
-  "ConnectionStrings": {
-    "DefaultConnection": "server=localhost;port=3306;database=bus;user=root;password=12345;"
   }
-}
-```
+  ```
 3. Program.cs에 소스코드 추가
 
-```
-builder.Services.AddDbContext<BusContext>(options => options.UseMySql(
-                builder.Configuration.GetConnectionString("DefaultConnection"),
-                ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
-                ));
-```
+  ```
+  builder.Services.AddDbContext<BusContext>(options => options.UseMySql(
+                  builder.Configuration.GetConnectionString("DefaultConnection"),
+                  ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
+                  ));
+  ```
 
 3. 구현에 필요한 NUGET 패키지 설치
  - Microsoft.EntityFrameworkCore
@@ -37,38 +37,38 @@ builder.Services.AddDbContext<BusContext>(options => options.UseMySql(
 
 4. 테이블에 속성 생성
 
-```
-    public partial class BusTable
-    {
-        [Key] // 추가해야함 - 기본키
-        public int BusIdx { get; set; }
-
-        public string BusNum { get; set; } = null!;
-
-        public int BusCnt { get; set; }
-
-        public int BusGap { get; set; }
-
-        public int BusNowIn { get; set; }
-    }
-```
+  ```
+      public partial class BusTable
+      {
+          [Key] // 추가해야함 - 기본키
+          public int BusIdx { get; set; }
+  
+          public string BusNum { get; set; } = null!;
+  
+          public int BusCnt { get; set; }
+  
+          public int BusGap { get; set; }
+  
+          public int BusNowIn { get; set; }
+      }
+  ```
 
 5. 데이터베이스와 연결하기 위한 Dbcontext 파일 작성
    - Dbcontext의 역활
      -  DbContext는 데이터베이스의 테이블과 데이터를 C# 클래스와 객체로 매핑하여 애플리케이션과 데이터베이스 간의 데이터 접근을 쉽게 만듬 
-```
-    public partial class BusContext : DbContext // 옆에 DbContext 문자열을 추가해준다.
-    {
-        public BusContext() { }
-
-
-        // 이 밑에 소스를 작성해야지 Add-Migration이 작동함
-        public BusContext(DbContextOptions<BusContext> options)
-            : base(options)
-        {
-        }
-    }
-```
+  ```
+      public partial class BusContext : DbContext // 옆에 DbContext 문자열을 추가해준다.
+      {
+          public BusContext() { }
+  
+  
+          // 이 밑에 소스를 작성해야지 Add-Migration이 작동함
+          public BusContext(DbContextOptions<BusContext> options)
+              : base(options)
+          {
+          }
+      }
+  ```
 
 3. 컨트롤러 추가
   - Controllers 폴더에서 우클릭
