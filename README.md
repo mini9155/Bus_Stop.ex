@@ -6,7 +6,7 @@
 
 2. appsettings.json 에서 연결 문자열 추가
 
-'''
+```
 {
   "Logging": {
     "LogLevel": {
@@ -20,4 +20,4 @@
     "DefaultConnection": "server=localhost;port=3306;database=bus;user=root;password=12345;"
   }
 }
-'''
+```
