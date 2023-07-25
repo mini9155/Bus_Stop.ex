@@ -65,7 +65,7 @@
 3. 컨트롤러 추가
   - Controllers 폴더에서 우클릭
     - 추가를 누르면 컨트롤러가 있다
-    - Entity Framework를 사용하며 뷰가 포함된 API 컨트롤러 생성
+    - Entity Framework를 사용하며 동작이 포함된 API 컨트롤러 생성
     - 모델 클래스에 속성 정의해놓은 클래스 선택
     - DbContext 클래스에 DbContext 문자열 추가해놓은 클래스 선택
     - 추가 누르면 생성이 됨
