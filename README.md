@@ -53,9 +53,10 @@
         }
     ```
   
-  5. 데이터베이스와 연결하기 위한 Dbcontext 파일 작성
+  5. 데이터베이스와 연결하기 위한 Dbcontext 파일 생성
      - Dbcontext의 역활
-       -  DbContext는 데이터베이스의 테이블과 데이터를 C# 클래스와 객체로 매핑하여 애플리케이션과 데이터베이스 간의 데이터 접근을 쉽게 만듬 
+       -  DbContext는 데이터베이스의 테이블과 데이터를 C# 클래스와 객체로 매핑하여 애플리케이션과 데이터베이스 간의 데이터 접근을 쉽게 만듬
+       -  
     ```
         public partial class BusContext : DbContext // 옆에 DbContext 문자열을 추가해준다.
         {
