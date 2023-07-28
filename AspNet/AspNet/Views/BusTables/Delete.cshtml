@@ -1,0 +1,45 @@
+﻿@model AspNet.Models.BusTable
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BusTable</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BusNum)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BusNum)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BusCnt)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BusCnt)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BusGap)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BusGap)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BusNowIn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BusNowIn)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BusIdx" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

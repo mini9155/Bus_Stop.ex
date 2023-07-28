@@ -1,0 +1,49 @@
+﻿@model AspNet.Models.BusTable
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>BusTable</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BusIdx" />
+            <div class="form-group">
+                <label asp-for="BusNum" class="control-label"></label>
+                <input asp-for="BusNum" class="form-control" />
+                <span asp-validation-for="BusNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusCnt" class="control-label"></label>
+                <input asp-for="BusCnt" class="form-control" />
+                <span asp-validation-for="BusCnt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusGap" class="control-label"></label>
+                <input asp-for="BusGap" class="form-control" />
+                <span asp-validation-for="BusGap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BusNowIn" class="control-label"></label>
+                <input asp-for="BusNowIn" class="form-control" />
+                <span asp-validation-for="BusNowIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
